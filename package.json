@@ -5,26 +5,27 @@
   "scripts": {
     "test": "node test.js"
   },
+  "main": "bin/dnsever.js",
   "repository": {
     "type": "git",
-    "url": "git://gitbub.com/dnseveradmin/dnsever.git"
+    "url": "https://github.com/dnseveradmin/dnsever"
   },
   "keywords": [
     "dnsever",
     "dnsever-api"
   ],
-  "author": "Inc. DNSEver<admin@dnsever.com> (https://kr.dnsever.com/)",
+  "author": {
+    "name": "Inc. DNSEver",
+    "email": "admin@dnsever.com",
+    "url": "https://kr.dnsever.com"
+  },
   "contributors": [
-    "Kyungseo-Park"
+    "Kyungseo-Park <admin@dnsever.com> (https://kkyungvelyy.com)"
   ],
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": "https://github.com/dnseveradmin/dnsever/blob/main/LICENSE"
-    }
-  ],
+  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/dnseveradmin/dnsever/issues"
+    "url": "https://github.com/dnseveradmin/dnsever/issues",
+    "email": "admin@dnsever.com"
   },
   "homepage": "https://kr.dnsever.com/",
   "preferGlobal": true,
