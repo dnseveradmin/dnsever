@@ -15,7 +15,14 @@ $ dnsever
 2. npm 설치
 
 ```bash
+$ npm install -g dnsever
+$ dnsever
+```
 
+## 현재 사용 가능한 DNS 레코드 타입
+
+```
+A, AAAA, CNAME, MX, TXT
 ```
 
 ## 사용자 지정 파일(etc)
