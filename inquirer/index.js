@@ -1,12 +1,12 @@
-import inquirer from "inquirer";
-import Rx from "rxjs/Rx.js";
+const inquirer = require("inquirer");
+const Rx = require("rxjs/Rx.js");
 
 /**
  * @description 요청을 처리함.
  * @param {Array} question
  * @param {Array} answers
  */
-export default (question, answers, env) => {
+const inquirers = (question, answers, env) => {
   const prompts = new Rx.Subject();
   if (question.length !== answers.length) {
     console.error("Process Not Match");
@@ -38,3 +38,5 @@ export default (question, answers, env) => {
 
   questionList[0]();
 };
+
+exports.inquirers = inquirers;

@@ -1,6 +1,6 @@
-import fs from "fs";
-import inquirer from "./index.js";
-import { createRootDir, createConfig, ENV_PATH } from "../utils/config.js";
+const fs = require("fs");
+const { inquirers } = require("./index.js");
+const { createRootDir, createConfig, ENV_PATH } = require("../utils/config.js");
 
 /**
  * @author Kyungseo.Park
@@ -8,7 +8,7 @@ import { createRootDir, createConfig, ENV_PATH } from "../utils/config.js";
  * @param {object} env 사용자 아이디, 비밀번호
  * @returns {void}
  */
-export const updateInquirerConfig = (env) => {
+const updateInquirerConfig = (env) => {
   const questionList = [
     {
       type: "confirm",
@@ -73,7 +73,7 @@ export const updateInquirerConfig = (env) => {
     },
   ];
 
-  inquirer(questionList, answerList, env);
+  inquirers(questionList, answerList, env);
 };
 
 /**
@@ -86,7 +86,7 @@ export const updateInquirerConfig = (env) => {
  * }} env
  * @returns {void}
  */
-export const createInquirerConfig = (env) => {
+const createInquirerConfig = (env) => {
   const questionList = [
     {
       type: "input",
@@ -128,5 +128,8 @@ export const createInquirerConfig = (env) => {
     },
   ];
 
-  inquirer(questionList, answerList, env);
+  inquirers(questionList, answerList, env);
 };
+
+exports.updateInquirerConfig = updateInquirerConfig;
+exports.createInquirerConfig = createInquirerConfig;

@@ -1,24 +1,23 @@
-import fs from "fs";
-import path from "path";
-import os from "os";
+const fs = require("fs");
+const path = require("path");
+const os = require("os");
+const { version } = require("../package.json");
 
 /** @description DNSEver 설정 파일이 저장되는 디렉토리 */
-export const ROOT_PATH = path.resolve(os.homedir(), ".dnsever");
+const ROOT_PATH = path.resolve(os.homedir(), ".dnsever");
 
 /** @description 기본 설정 파일 */
-export const ENV_PATH = path.resolve(ROOT_PATH, "config.json");
+const ENV_PATH = path.resolve(ROOT_PATH, "config.json");
 
 /** @description package.json 파일 내용 */
-export const VERSION = JSON.parse(
-  fs.readFileSync(path.resolve() + "/package.json", "utf-8")
-).version;
+const VERSION = version;
 
 /**
  * @author Kyungseo.Park
  * @description 사용자가 임의로 등록한 파일의 PATH를 삭제함.
  * @returns {void}
  */
-export const deleteCustomConfigPath = () => {
+const deleteCustomConfigPath = () => {
   const config = JSON.parse(fs.readFileSync(ENV_PATH, "utf-8"));
   config.CLIENT_ID = "";
   config.CLIENT_PW = "";
@@ -34,7 +33,7 @@ export const deleteCustomConfigPath = () => {
  * @param {string} client_pw
  * @returns {void}
  */
-export const createRootDir = () => {
+const createRootDir = () => {
   if (!fs.existsSync(ROOT_PATH)) {
     fs.mkdirSync(ROOT_PATH);
   }
@@ -48,7 +47,7 @@ export const createRootDir = () => {
  * @param {string?} client_pw
  * @returns {void}
  */
-export const createConfig = (client_id = "", client_pw = "") => {
+const createConfig = (client_id = "", client_pw = "") => {
   const config_json = JSON.stringify({
     CLIENT_ID: `${client_id}`,
     CLIENT_PW: `${client_pw}`,
@@ -64,7 +63,7 @@ export const createConfig = (client_id = "", client_pw = "") => {
  * @param {object} env
  * @returns {boolean}
  */
-export const isConfig = (env) => {
+const isConfig = (env) => {
   // config 파일의 존재 여부 확인
   if (!fs.existsSync(env.fromFile)) {
     notFoundConfigFile(null, null, env);
@@ -84,7 +83,7 @@ export const isConfig = (env) => {
  * @description 프로세스 종료함
  * @returns {void}
  */
-export const notFoundConfigFile = (CLIENT_ID = null, CLIENT_PW = null) => {
+const notFoundConfigFile = (CLIENT_ID = null, CLIENT_PW = null) => {
   console.log(
     "\n\tdnsever config 또는 config-catch 명령 으로 환경변수를 추가 하시거나 직접 추가해 주세요."
   );
@@ -109,7 +108,7 @@ export const notFoundConfigFile = (CLIENT_ID = null, CLIENT_PW = null) => {
  * @param {string} pw
  * @returns {void}
  */
-export const createConfigWrite = (id, pw) => {
+const createConfigWrite = (id, pw) => {
   createConfig(id, pw);
 };
 
@@ -120,8 +119,19 @@ export const createConfigWrite = (id, pw) => {
  * @param {string} env 사용자가 입력한 환경 변수 정보(아이디, Key)
  * @returns {void}
  */
-export const createCustomConfig = (env) => {
+const createCustomConfig = (env) => {
   createRootDir();
   createConfig(env.CLIENT_ID, env.CLIENT_PW);
   console.log("Done.");
 };
+
+exports.ROOT_PATH = ROOT_PATH;
+exports.ENV_PATH = ENV_PATH;
+exports.VERSION = VERSION;
+exports.deleteCustomConfigPath = deleteCustomConfigPath;
+exports.createRootDir = createRootDir;
+exports.createConfig = createConfig;
+exports.isConfig = isConfig;
+exports.notFoundConfigFile = notFoundConfigFile;
+exports.createConfigWrite = createConfigWrite;
+exports.createCustomConfig = createCustomConfig;

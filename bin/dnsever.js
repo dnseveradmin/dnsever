@@ -1,27 +1,28 @@
 #!/usr/bin/env node
 
-import chalk from "chalk";
-import figlet from "figlet";
-import { program } from "commander";
-import dig from "node-dig-dns";
-import fs from "fs";
-import {
+const chalk = require("chalk");
+const figlet = require("figlet");
+const { program } = require("commander");
+const dig = require("node-dig-dns");
+const fs = require("fs");
+const {
   getDNSRecord,
   addDNSRecord,
   updateDNSRecord,
   deleteDNSRecord,
-} from "../http/request.js";
-import {
+} = require("../http/request.js");
+
+const {
   updateInquirerConfig,
   createInquirerConfig,
-} from "../inquirer/setting.js";
-import {
+} = require("../inquirer/setting.js");
+const {
   dnsTypeValidated,
   domainValidated,
   txtValidated,
   seqValidated,
-} from "../utils/validate.js";
-import {
+} = require("../utils/validate.js");
+const {
   ROOT_PATH,
   ENV_PATH,
   VERSION,
@@ -30,8 +31,9 @@ import {
   createConfigWrite,
   createCustomConfig,
   deleteCustomConfigPath,
-} from "../utils/config.js";
-import { print } from "../utils/printf.js";
+} = require("../utils/config.js");
+
+const { print } = require("../utils/printf.js");
 
 /**
  * @author Kyungseo.Park

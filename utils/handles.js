@@ -3,7 +3,7 @@
  * @param {string} cord
  * @returns {void}
  */
-export const handleError = (cord) => {
+const handleError = (cord) => {
   // Error
   switch (cord) {
     case "103":
@@ -54,3 +54,5 @@ export const handleError = (cord) => {
       process.exit(1);
   }
 };
+
+exports.handleError = handleError;

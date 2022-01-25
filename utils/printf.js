@@ -1,12 +1,12 @@
 /** TODO: 출력 옵션을 여러개로 두어 테이블 출력 외에 excel export 기능도 있으면 좋을 것으로 보임. */
-import { table } from "table";
+const { table } = require("table");
 
 /**
  * @author Kyungseo.Park
  * @description 계정 정보에 대한 초기 설정
  * @param {Array} element API response 의 Array 가 넘어옴
  */
-export const print = (element) => {
+const print = (element) => {
   const elements = [];
   if (!element) {
     console.log("Empty Data");
@@ -23,3 +23,5 @@ export const print = (element) => {
 
   console.log(table(elements, config));
 };
+
+exports.print = print;

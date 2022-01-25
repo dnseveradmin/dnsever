@@ -1,4 +1,4 @@
-import { getHeader, _transformXML, _request } from "./http-option.js";
+const { getHeader, _request } = require("./http-option.js");
 
 const END_POINT = {
   GET_HOST_URL: "http://172.20.0.5:5000/record/getrecord.php",
@@ -15,7 +15,7 @@ const END_POINT = {
  * @param {string} type  A, AAAA, CNAME, MX, TXT
  * @returns {Object} _request(option)
  */
-export const getDNSRecord = async (CLIENT_ID, CLIENT_SECRET, zone, type) => {
+const getDNSRecord = async (CLIENT_ID, CLIENT_SECRET, zone, type) => {
   const option = {
     method: "POST",
     url: END_POINT.GET_HOST_URL,
@@ -37,13 +37,7 @@ export const getDNSRecord = async (CLIENT_ID, CLIENT_SECRET, zone, type) => {
  * @param {string} type A, AAAA, CNAME, MX, TXT
  * @returns {Object | {}} _request(option)
  */
-export const addDNSRecord = async (
-  CLIENT_ID,
-  CLIENT_SECRET,
-  host,
-  value,
-  type
-) => {
+const addDNSRecord = async (CLIENT_ID, CLIENT_SECRET, host, value, type) => {
   const option = {
     method: "POST",
     url: END_POINT.ADD_HOST_URL,
@@ -66,13 +60,7 @@ export const addDNSRecord = async (
  * @param {string} type A, AAAA, CNAME, MX, TXT
  * @returns {object} result_data
  */
-export const updateDNSRecord = async (
-  CLIENT_ID,
-  CLIENT_SECRET,
-  id,
-  value,
-  type
-) => {
+const updateDNSRecord = async (CLIENT_ID, CLIENT_SECRET, id, value, type) => {
   const option = {
     method: "POST",
     url: END_POINT.UPDATE_HOST_URL,
@@ -93,7 +81,7 @@ export const updateDNSRecord = async (
  * @param {string} id 46800296
  * @returns {Object | {}} result_data
  */
-export const deleteDNSRecord = async (CLIENT_ID, CLIENT_SECRET, id) => {
+const deleteDNSRecord = async (CLIENT_ID, CLIENT_SECRET, id) => {
   const option = {
     method: "POST",
     url: END_POINT.DELETE_HOST_URL,
@@ -102,3 +90,8 @@ export const deleteDNSRecord = async (CLIENT_ID, CLIENT_SECRET, id) => {
   };
   return _request(option);
 };
+
+exports.getDNSRecord = getDNSRecord;
+exports.addDNSRecord = addDNSRecord;
+exports.updateDNSRecord = updateDNSRecord;
+exports.deleteDNSRecord = deleteDNSRecord;

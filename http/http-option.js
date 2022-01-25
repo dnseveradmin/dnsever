@@ -1,8 +1,8 @@
-import dom from "xmldom";
-import axios from "axios";
-import convert from "xml-js";
-import { handleError } from "../utils/handles.js";
-import { VERSION } from "../utils/config.js";
+const dom = require("xmldom");
+const axios = require("axios");
+const convert = require("xml-js");
+const { handleError } = require("../utils/handles.js");
+const { VERSION } = require("../utils/config.js");
 
 /**
  * @author Kyungseo.Park
@@ -11,7 +11,7 @@ import { VERSION } from "../utils/config.js";
  * @param {string}} auth_code
  * @returns {Headers} header
  */
-export const getHeader = (id, auth_code) => {
+const getHeader = (id, auth_code) => {
   const auth = new Buffer.from(id + ":" + auth_code).toString("base64");
   const header = {
     Authorization: "Basic " + auth,
@@ -26,7 +26,7 @@ export const getHeader = (id, auth_code) => {
  * @param {XMLDocument}} body
  * @returns {object} body
  */
-export const _transformXML = (body) => {
+const _transformXML = (body) => {
   const DOMparsers = dom.DOMParser;
 
   return new DOMparsers().parseFromString(body);
@@ -39,7 +39,7 @@ export const _transformXML = (body) => {
  * @param {object}} option
  * @returns {object} xmlToJson[0].elements
  */
-export const _request = async (option) => {
+const _request = async (option) => {
   const res = await axios(option).then(({ data }) => {
     return data;
   });
@@ -47,3 +47,7 @@ export const _request = async (option) => {
   handleError(xmlToJson[0].attributes.code);
   return xmlToJson[0].elements;
 };
+
+exports.getHeader = getHeader;
+exports._transformXML = _transformXML;
+exports._request = _request;

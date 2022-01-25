@@ -4,7 +4,7 @@
  * @param {string} value
  * @returns {boolean | Function} true | process.exit(1)
  */
-export const txtValidated = (value, type) => {
+const txtValidated = (value, type) => {
   // Value 또는 Type 업음
   if (!value || !type) {
     process.exit(1);
@@ -52,7 +52,7 @@ export const txtValidated = (value, type) => {
  * @param {string} value 도메인 정보
  * @returns {boolean | Function} true | process.exit(1)
  */
-export const domainValidated = (value) => {
+const domainValidated = (value) => {
   if (!value) {
     return true;
   }
@@ -77,7 +77,7 @@ export const domainValidated = (value) => {
  * @param {string} value "A", "AAAA", "CNAME", "MX", "TXT"
  * @returns {boolean | Function} true | process.exit(1)
  */
-export const dnsTypeValidated = (value) => {
+const dnsTypeValidated = (value) => {
   if (!value) {
     console.log("value is not found");
     return true;
@@ -99,7 +99,7 @@ export const dnsTypeValidated = (value) => {
  * @param {number} value
  * @returns {boolean | Function} true | process.exit(1)
  */
-export const seqValidated = (value) => {
+const seqValidated = (value) => {
   const seqRex = /^[0-9]*$/;
   if (!seqRex.test(value)) {
     console.log("SEQ는 숫자로 구성되어 있습니다. 다시 확인해주세요.");
@@ -108,3 +108,8 @@ export const seqValidated = (value) => {
 
   return true;
 };
+
+exports.txtValidated = txtValidated;
+exports.domainValidated = domainValidated;
+exports.dnsTypeValidated = dnsTypeValidated;
+exports.seqValidated = seqValidated;
