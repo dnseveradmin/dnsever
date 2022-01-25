@@ -1,7 +1,7 @@
 {
   "name": "dnsever",
   "description": "DNSEver API Client",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "scripts": {
     "test": "node test.js"
   },
@@ -36,9 +36,6 @@
     "figlet": "^1.5.2",
     "inquirer": "^8.2.0",
     "node-dig-dns": "^0.3.1",
-    "parse-version": "^0.7.0",
-    "read-package-json": "^4.1.1",
-    "rxjs": "^5.5.12",
     "table": "^6.8.0",
     "xml-js": "^1.6.11",
     "xmldom": "^0.6.0"
