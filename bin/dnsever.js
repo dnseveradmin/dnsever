@@ -87,7 +87,6 @@ program
     env.fromFile = ENV_PATH;
     if (!fs.existsSync(ROOT_PATH)) {
       // dnsever 폴더 생성
-      console.log(ROOT_PATH + "폴더가 없어 생성 되었습니다.");
       createRootDir();
     }
 
