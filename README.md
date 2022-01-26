@@ -154,7 +154,7 @@ DNSEver에 등록된 DNS 레코드를 수정하는 Command 옵션[Delete] 이다
 # Example
 
 ```bash
-$ node ./bin/dnsever.js
+$ dnsever
 Usage: dnsever [options] [command]
 
   ____    _   _   ____    _____                            ____   _   _                  _
@@ -200,17 +200,17 @@ Commands:
 ```
 
 ```bash
-$ node ./bin/dnsever.js config-catch -f ./example.json
+$ dnsever config-catch -f ./example.json
 Done.
 ```
 
 ```bash
-$ node ./bin/dnsever.js reset
+$ dnsever reset
 It's reset.
 ```
 
 ```bash
-$ node ./bin/dnsever.js config -u 아이디 -p 암호키
+$ dnsever config -u 아이디 -p 암호키
 이미 등록된 설정파일이 존재합니다.
 ? 환경변수 설정 파일을 새로 만드시겠습니까? :  Yes
 ? DNSEver 아이디를 입력해주세요. :  아이디
@@ -219,7 +219,7 @@ Done.
 ```
 
 ```bash
-$ node ./bin/dnsever.js show -d australia.wo.tc -t TXT
+$ dnsever show -d australia.wo.tc -t TXT
 ╔══════════════════════════════╤══════════╤══════╤══════════════
 ║ name                         │ id       │ type │ value                                │ zone            │ host         ║
 ║ aa.australia.wo.tc           │ 46800228 │ TXT  │ this-is-new-data                     │ australia.wo.tc │ aa           ║
@@ -244,7 +244,7 @@ $ node ./bin/dnsever.js show -d australia.wo.tc -t TXT
 ```
 
 ```bash
-$ node ./bin/dnsever.js add -h subdomian.australia.wo.tc -v 'v=spf1 include:_spf.dnsever.com ~all'
+$ dnsever add -h subdomian.australia.wo.tc -v 'v=spf1 include:_spf.dnsever.com ~all'
 ╔═══════════════════════════╤══════════╤═════
 ║ name                      │ id       │ value     │ type │ zone │ host            ║
 ║ subdomian.australia.wo.tc │ 46800307 │ subdomian │      │ TXT  │ australia.wo.tc ║
@@ -252,7 +252,7 @@ $ node ./bin/dnsever.js add -h subdomian.australia.wo.tc -v 'v=spf1 include:_spf
 ```
 
 ```bash
-% node ./bin/dnsever.js update -s 46800307 -v '12321asd'
+% dnsever update -s 46800307 -v '12321asd'
 ╔═══════════════════════════╤══════════╤════════════════════════════
 ║ name                      │ id       │ old_value                            │ new_value │ type │ zone            │ host      ║
 ║ subdomian.australia.wo.tc │ 46800307 │ v=spf1 include:_spf.dnsever.com ~all │ 12321asd  │ TXT  │ australia.wo.tc │ subdomian ║
@@ -260,7 +260,7 @@ $ node ./bin/dnsever.js add -h subdomian.australia.wo.tc -v 'v=spf1 include:_spf
 ```
 
 ```
-$ node ./bin/dnsever.js delete -s 46800307
+$ dnsever delete -s 46800307
 ╔═══════════════════════════╤══════════╤═══════
 ║ name                      │ id       │ value     │ type     │ zone │ host            ║
 ║ subdomian.australia.wo.tc │ 46800307 │ subdomian │ 12321asd │ TXT  │ australia.wo.tc ║
@@ -268,7 +268,7 @@ $ node ./bin/dnsever.js delete -s 46800307
 ```
 
 ```bash
-$ node ./bin/dnsever.js dig -d australia.wo.tc
+$ dnsever dig -d australia.wo.tc
 검색쿼리 : dig  australia.wo.tc   ALL
 
 {
