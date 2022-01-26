@@ -38,7 +38,8 @@
     "node-dig-dns": "^0.3.1",
     "table": "^6.8.0",
     "xml-js": "^1.6.11",
-    "xmldom": "^0.6.0"
+    "xmldom": "^0.6.0",
+    "rxjs": "^5.5.12"
   },
   "bin": {
     "dnsever": "./bin/dnsever.js"
