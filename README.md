@@ -1,5 +1,11 @@
 # DNSEver API Client <img src="https://img.shields.io/github/package-json/v/dnseveradmin/dnsever" alt="Latest Stable Version">
 
+## Testing
+
+- Ubuntu 20.04
+- Window 10
+- Mac M1
+
 ## 로컬 설치 방법
 
 1. clone 받아 설치
