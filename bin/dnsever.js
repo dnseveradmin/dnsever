@@ -116,7 +116,7 @@ program
   .command("config-catch")
   .requiredOption("-f, --from-file <path>", "설정 파일 등록")
   .description(
-    "계정 정보가 담긴  파일을 JSON형식으로 업로드\n" +
+    "계정 정보가 담긴 파일을 JSON형식으로 업로드\n" +
       "=> dnsever config-catch -f ./kspark.link.json"
   )
   .action((env) => {
@@ -128,14 +128,14 @@ program
 
     // 파일 안의 내용 읽음.
     const readFile = JSON.parse(fs.readFileSync(env.fromFile, "utf-8"));
+    readFile.CLIENT_ID = readFile?.CLIENT_ID ? readFile?.CLIENT_ID : readFile?.id;
+    readFile.CLIENT_PW = readFile?.CLIENT_PW ? readFile?.CLIENT_PW : readFile?.pw;
     if (!(readFile?.CLIENT_ID && readFile?.CLIENT_PW)) {
       console.log("The file cannot be read.");
       process.exit(1);
     }
 
-    if (readFile?.CLIENT_ID && readFile?.CLIENT_PW && env.fromFile) {
-      createCustomConfig(readFile);
-    }
+    createCustomConfig(readFile);
   });
 /**
  * @author Kyungseo.Park

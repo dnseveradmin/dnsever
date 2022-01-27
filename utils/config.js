@@ -122,7 +122,7 @@ const createConfigWrite = (id, pw) => {
 const createCustomConfig = (env) => {
   createRootDir();
   createConfig(env.CLIENT_ID, env.CLIENT_PW);
-  console.log("Done.");
+  console.log("SUCCESS.");
 };
 
 exports.ROOT_PATH = ROOT_PATH;
