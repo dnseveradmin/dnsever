@@ -6,7 +6,7 @@ const { table } = require("table");
  * @description 계정 정보에 대한 초기 설정
  * @param {Array} element API response 의 Array 가 넘어옴
  */
-const print = (element) => {
+const printTable = (element) => {
   const elements = [];
   if (!element) {
     console.log("Empty Data");
@@ -24,4 +24,4 @@ const print = (element) => {
   console.log(table(elements, config));
 };
 
-exports.print = print;
+exports.printTable = printTable;

@@ -1,8 +1,10 @@
 # DNSEver API Client <img src="https://img.shields.io/github/package-json/v/dnseveradmin/dnsever" alt="Latest Stable Version">
 
-## 현재 사용 불가 
- - 내부 점검이 있어 현재 사용 불가합니다. 
- - 서비스 이용 가능일은 2월 15 정도로 잡고 있습니다. 
+## 현재 사용 불가
+
+- 내부 점검이 있어 현재 사용 불가합니다.
+- 서비스 이용 가능일은 2월 15 정도로 잡고 있습니다.
+
 ## Testing
 
 - Ubuntu 20.04

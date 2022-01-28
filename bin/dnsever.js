@@ -30,10 +30,10 @@ const {
   createRootDir,
   createConfigWrite,
   createCustomConfig,
-  deleteCustomConfigPath,
+  resetCustomConfigPath,
 } = require("../utils/config.js");
 
-const { print } = require("../utils/printf.js");
+const { printTable } = require("../utils/printf.js");
 
 /**
  * @author Kyungseo.Park
@@ -68,7 +68,7 @@ program
   .command("reset")
   .description("직접 지정한 계정 정보의 경로를 초기화\n" + "=> dnsever reset")
   .action(() => {
-    deleteCustomConfigPath(ENV_PATH);
+    resetCustomConfigPath(ENV_PATH);
   });
 
 /**
@@ -128,8 +128,12 @@ program
 
     // 파일 안의 내용 읽음.
     const readFile = JSON.parse(fs.readFileSync(env.fromFile, "utf-8"));
-    readFile.CLIENT_ID = readFile?.CLIENT_ID ? readFile?.CLIENT_ID : readFile?.id;
-    readFile.CLIENT_PW = readFile?.CLIENT_PW ? readFile?.CLIENT_PW : readFile?.pw;
+    readFile.CLIENT_ID = readFile?.CLIENT_ID
+      ? readFile?.CLIENT_ID
+      : readFile?.id;
+    readFile.CLIENT_PW = readFile?.CLIENT_PW
+      ? readFile?.CLIENT_PW
+      : readFile?.pw;
     if (!(readFile?.CLIENT_ID && readFile?.CLIENT_PW)) {
       console.log("The file cannot be read.");
       process.exit(1);
@@ -178,7 +182,7 @@ program
     );
 
     // 결과 출력
-    print(dnsRecord);
+    printTable(dnsRecord);
   });
 
 /**
@@ -241,7 +245,7 @@ program
       getType
     );
 
-    print(dnsRecord);
+    printTable(dnsRecord);
   });
 
 /**
@@ -299,7 +303,7 @@ program
     );
 
     // 결과 출력
-    print(dnsRecord);
+    printTable(dnsRecord);
   });
 
 /**
@@ -328,7 +332,7 @@ program
     );
 
     // 결과 출력
-    print(dnsRecord);
+    printTable(dnsRecord);
   });
 
 /**

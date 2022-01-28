@@ -17,7 +17,7 @@ const VERSION = version;
  * @description 사용자가 임의로 등록한 파일의 PATH를 삭제함.
  * @returns {void}
  */
-const deleteCustomConfigPath = () => {
+const resetCustomConfigPath = () => {
   const config = JSON.parse(fs.readFileSync(ENV_PATH, "utf-8"));
   config.CLIENT_ID = "";
   config.CLIENT_PW = "";
@@ -66,7 +66,7 @@ const createConfig = (client_id = "", client_pw = "") => {
 const isConfig = (env) => {
   // config 파일의 존재 여부 확인
   if (!fs.existsSync(env.fromFile)) {
-    notFoundConfigFile(null, null, env);
+    process.exit(1);
   }
 
   // 계정이 잘 등록 되어있는지 확인
@@ -128,7 +128,7 @@ const createCustomConfig = (env) => {
 exports.ROOT_PATH = ROOT_PATH;
 exports.ENV_PATH = ENV_PATH;
 exports.VERSION = VERSION;
-exports.deleteCustomConfigPath = deleteCustomConfigPath;
+exports.resetCustomConfigPath = resetCustomConfigPath;
 exports.createRootDir = createRootDir;
 exports.createConfig = createConfig;
 exports.isConfig = isConfig;

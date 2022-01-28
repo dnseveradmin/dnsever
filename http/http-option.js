@@ -40,11 +40,12 @@ const _transformXML = (body) => {
  * @returns {object} xmlToJson[0].elements
  */
 const _request = async (option) => {
-  const res = await axios(option).then(({ data }) => {
-    return data;
-  });
-  const xmlToJson = JSON.parse(convert.xml2json(res)).elements[0].elements;
-  handleError(xmlToJson[0].attributes.code);
+  const { data } = await axios(option);
+  const xmlToJson = JSON.parse(convert.xml2json(data)).elements[0].elements;
+
+  if (xmlToJson) {
+    handleError(xmlToJson[0].attributes.code);
+  }
   return xmlToJson[0].elements;
 };
 

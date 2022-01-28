@@ -6,7 +6,7 @@ const Rx = require("rxjs/Rx.js");
  * @param {Array} question
  * @param {Array} answers
  */
-const inquirers = (question, answers, env) => {
+const inquirers = (question, answers) => {
   const prompts = new Rx.Subject();
   if (question.length !== answers.length) {
     console.error("Process Not Match");
