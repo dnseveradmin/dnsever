@@ -6,9 +6,17 @@
 - Window 10
 - Mac M1
 
-## 로컬 설치 방법
+## Install
 
-1. clone 받아 설치
+npm install
+
+```bash
+$ npm install -g dnsever
+$ dnsever
+```
+
+If you want customization
+
 
 ```bash
 $ git clone https://github.com/dnseveradmin/dnsever
@@ -18,23 +26,16 @@ $ sudo npm link
 $ dnsever
 ```
 
-2. npm 설치
 
-```bash
-$ npm install -g dnsever
-$ dnsever
-```
-
-## 현재 사용 가능한 DNS 레코드 타입
+## Currently available features
 
 ```
 A, AAAA, CNAME, MX, TXT
 ```
 
-## 사용자 지정 파일(etc)
+## Custom Environmental File (etc)
 
-본 README 에는 example.json 으로 등록 되어있습니다.
-
+For example file name example.json
 ```json
 {
   "CLIENT_ID": "UserID",
@@ -42,7 +43,7 @@ A, AAAA, CNAME, MX, TXT
 }
 ```
 
-## 실행
+## Start
 
 ```bash
 Usage: dnsever [options] [command]
