@@ -1,8 +1,8 @@
 const dom = require("xmldom");
 const axios = require("axios");
 const convert = require("xml-js");
-const { handleError } = require("../utils/handles.js");
-const { VERSION } = require("../utils/config.js");
+const {handleError} = require("../utils/handles.js");
+const {VERSION} = require("../utils/config.js");
 
 /**
  * @author Kyungseo.Park
@@ -12,12 +12,12 @@ const { VERSION } = require("../utils/config.js");
  * @returns {Headers} header
  */
 const getHeader = (id, auth_code) => {
-  const auth = new Buffer.from(id + ":" + auth_code).toString("base64");
-  const header = {
-    Authorization: "Basic " + auth,
-    "User-Agent": `DNSEver-Client/${VERSION}`,
-  };
-  return header;
+    const auth = new Buffer.from(id + ":" + auth_code).toString("base64");
+    const header = {
+        Authorization: "Basic " + auth,
+        "User-Agent": `DNSEver-Client/${VERSION}`,
+    };
+    return header;
 };
 
 /**
@@ -27,9 +27,9 @@ const getHeader = (id, auth_code) => {
  * @returns {object} body
  */
 const _transformXML = (body) => {
-  const DOMparsers = dom.DOMParser;
+    const DOMparsers = dom.DOMParser;
 
-  return new DOMparsers().parseFromString(body);
+    return new DOMparsers().parseFromString(body);
 };
 
 /**
@@ -40,13 +40,13 @@ const _transformXML = (body) => {
  * @returns {object} xmlToJson[0].elements
  */
 const _request = async (option) => {
-  const { data } = await axios(option);
-  const xmlToJson = JSON.parse(convert.xml2json(data)).elements[0].elements;
+    const {data} = await axios(option);
+    const xmlToJson = JSON.parse(convert.xml2json(data)).elements[0].elements;
 
-  if (xmlToJson) {
-    handleError(xmlToJson[0].attributes.code, xmlToJson[0].attributes.msg);
-  }
-  return xmlToJson[0].elements;
+    if (xmlToJson) {
+        handleError(xmlToJson[0].attributes.code, xmlToJson[0].attributes.msg);
+    }
+    return xmlToJson[0].elements;
 };
 
 exports.getHeader = getHeader;

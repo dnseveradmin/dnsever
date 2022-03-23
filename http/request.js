@@ -1,10 +1,10 @@
-const { getHeader, _request } = require("./http-option.js");
+const {getHeader, _request} = require("./http-option.js");
 
 const END_POINT = {
-  GET_HOST_URL: "https://api.dnsever.com/record/getrecord.php",
-  ADD_HOST_URL: "https://api.dnsever.com/record/add.php",
-  UPDATE_HOST_URL: "https://api.dnsever.com/record/update.php",
-  DELETE_HOST_URL: "https://api.dnsever.com/record/delete.php",
+    GET_HOST_URL: "https://api.dnsever.com/record/getrecord.php",
+    ADD_HOST_URL: "https://api.dnsever.com/record/add.php",
+    UPDATE_HOST_URL: "https://api.dnsever.com/record/update.php",
+    DELETE_HOST_URL: "https://api.dnsever.com/record/delete.php",
 };
 
 /**
@@ -16,16 +16,16 @@ const END_POINT = {
  * @returns {Object} _request(option)
  */
 const getDNSRecord = async (CLIENT_ID, CLIENT_SECRET, zone, type) => {
-  const option = {
-    method: "POST",
-    url: END_POINT.GET_HOST_URL,
-    params: {
-      zone,
-      type,
-    },
-    headers: getHeader(CLIENT_ID, CLIENT_SECRET),
-  };
-  return _request(option);
+    const option = {
+        method: "POST",
+        url: END_POINT.GET_HOST_URL,
+        params: {
+            zone,
+            type,
+        },
+        headers: getHeader(CLIENT_ID, CLIENT_SECRET),
+    };
+    return _request(option);
 };
 
 /**
@@ -38,19 +38,19 @@ const getDNSRecord = async (CLIENT_ID, CLIENT_SECRET, zone, type) => {
  * @returns {Object | {}} _request(option)
  */
 const addDNSRecord = async (CLIENT_ID, CLIENT_SECRET, host, value, type, rank, memo) => {
-  const option = {
-    method: "POST",
-    url: END_POINT.ADD_HOST_URL,
-    params: {
-      name: host,
-      value,
-      type,
-      rank,
-      memo
-    },
-    headers: getHeader(CLIENT_ID, CLIENT_SECRET),
-  };
-  return _request(option);
+    const option = {
+        method: "POST",
+        url: END_POINT.ADD_HOST_URL,
+        params: {
+            name: host,
+            value,
+            type,
+            rank,
+            memo
+        },
+        headers: getHeader(CLIENT_ID, CLIENT_SECRET),
+    };
+    return _request(option);
 };
 
 /**
@@ -63,19 +63,19 @@ const addDNSRecord = async (CLIENT_ID, CLIENT_SECRET, host, value, type, rank, m
  * @returns {object} result_data
  */
 const updateDNSRecord = async (CLIENT_ID, CLIENT_SECRET, id, value, type, rank, memo) => {
-  const option = {
-    method: "POST",
-    url: END_POINT.UPDATE_HOST_URL,
-    params: {
-      id,
-      value,
-      type,
-      rank,
-      memo,
-    },
-    headers: getHeader(CLIENT_ID, CLIENT_SECRET),
-  };
-  return _request(option);
+    const option = {
+        method: "POST",
+        url: END_POINT.UPDATE_HOST_URL,
+        params: {
+            id,
+            value,
+            type,
+            rank,
+            memo,
+        },
+        headers: getHeader(CLIENT_ID, CLIENT_SECRET),
+    };
+    return _request(option);
 };
 
 /**
@@ -86,13 +86,13 @@ const updateDNSRecord = async (CLIENT_ID, CLIENT_SECRET, id, value, type, rank, 
  * @returns {Object | {}} result_data
  */
 const deleteDNSRecord = async (CLIENT_ID, CLIENT_SECRET, id, type) => {
-  const option = {
-    method: "POST",
-    url: END_POINT.DELETE_HOST_URL,
-    params: { id, type },
-    headers: getHeader(CLIENT_ID, CLIENT_SECRET),
-  };
-  return _request(option);
+    const option = {
+        method: "POST",
+        url: END_POINT.DELETE_HOST_URL,
+        params: {id, type},
+        headers: getHeader(CLIENT_ID, CLIENT_SECRET),
+    };
+    return _request(option);
 };
 
 exports.getDNSRecord = getDNSRecord;
