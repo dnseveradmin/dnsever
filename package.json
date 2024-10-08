@@ -1,0 +1,47 @@
+{
+  "name": "dnsever",
+  "description": "DNSEver API Client",
+  "version": "1.1.2",
+  "scripts": {
+    "test": "node ./bin/dnsever.js"
+  },
+  "main": "bin/dnsever.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dnseveradmin/dnsever"
+  },
+  "keywords": [
+    "dnsever",
+    "dnsever-api"
+  ],
+  "author": {
+    "name": "Inc. DNSEver",
+    "email": "admin@dnsever.com",
+    "url": "https://kr.dnsever.com"
+  },
+  "contributors": [
+    "Kyungseo-Park <admin@dnsever.com> (https://kkyungvelyy.com)"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dnseveradmin/dnsever/issues",
+    "email": "admin@dnsever.com"
+  },
+  "homepage": "https://kr.dnsever.com/",
+  "preferGlobal": true,
+  "dependencies": {
+    "axios": "^0.25.0",
+    "chalk": "^3.0.0",
+    "commander": "^8.3.0",
+    "figlet": "^1.5.2",
+    "inquirer": "^8.2.0",
+    "node-dig-dns": "^0.3.1",
+    "table": "^6.8.0",
+    "xml-js": "^1.6.11",
+    "xmldom": "^0.6.0",
+    "rxjs": "^5.5.12"
+  },
+  "bin": {
+    "dnsever": "./bin/dnsever.js"
+  }
+}

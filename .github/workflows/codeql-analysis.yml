@@ -1,0 +1,27 @@
+name: Node.js Build Test
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [ v14.17.4 ]
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Install dependencies
+        run: npm ci
+      - run: node ./bin/dnsever.js show
+      - run: node ./bin/dnsever.js add -h ${{ secrets.HOST }} -t ${{ secrets.TYPE }} -v `hostname -I | awk '{print $1}' | cut -d ' ' -f1`
